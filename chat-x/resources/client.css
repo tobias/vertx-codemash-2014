@@ -1,0 +1,49 @@
+body {
+    font-size: 2em;
+    font-family: sans-serif;
+}
+
+#left {
+    float: left;
+    width: 20%;
+    margin-left: 10px;
+}
+
+#right {
+    float: left;
+    width: 70%;
+    margin-left: 10px;
+}
+
+input, button {
+  font-size: 1em;
+}
+
+h4 {
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+
+#users, #messages {
+  width: 100%;
+  overflow: auto;
+  margin-top: 5px;
+  background-color: #ccc;
+  border: 1px solid #333;
+}
+
+#users {
+    height: 352px;
+}
+
+#messages {
+    height: 300px;
+}
+
+#message {
+    width: 80%;
+}
+
+#send {
+    width: 15%;
+}

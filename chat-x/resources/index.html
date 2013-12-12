@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Chat.x</title>
+    <script src="sockjs-0.3.4.min.js" type="text/javascript"></script>
+    <script src="vertxbus.js" type="text/javascript"></script>
+    <script src="jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="client.js" type="text/javascript"></script>
+    <link href="client.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <h1>Chat.x</h1>
+
+    <div id="login-pane">
+      <form id="login-form">
+        <input id="name" type="text"/>
+        <button>Login</button>
+      </form>
+    </div>
+    <div id="app-pane">
+      <a href="/log" target="_blank">Logs</a>
+      <div id="left">
+        <h4>Users</h4>
+        <div id="users">
+        </div>
+      </div>
+      <div id="right">
+        <h4>Messages</h4>
+        <form id="send-form">
+          <input id="message" type="text"/>
+          <button>Send</button>
+          </form>
+        <div id="messages">
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

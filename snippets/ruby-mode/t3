@@ -1,0 +1,7 @@
+# key: t3
+# --
+def say(user_ids, sock, *message)
+  Vertx::EventBus.send(user_ids[sock],
+                       {command: 'say',
+                         payload: message.join(' ')})
+end
