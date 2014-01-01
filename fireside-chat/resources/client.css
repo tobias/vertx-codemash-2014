@@ -33,11 +33,11 @@ h4 {
 }
 
 #users {
-    height: 352px;
+    height: 652px;
 }
 
 #messages {
-    height: 300px;
+    height: 600px;
 }
 
 #message {
@@ -47,3 +47,9 @@ h4 {
 #send {
     width: 15%;
 }
+
+#login-pane {
+  width: 520px;
+  margin: 200px auto;
+}
+

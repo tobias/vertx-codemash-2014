@@ -10,8 +10,8 @@ function display_message(message) {
 
 function setup(bus, login_reply) {
     login_reply.users.map(display_user)
-    bus.registerHandler('chat-x.users', display_user)
-    bus.registerHandler('chat-x.messages', display_message)
+    bus.registerHandler('fireside.users', display_user)
+    bus.registerHandler('fireside.messages', display_message)
     $('#send-form').submit(function(event) {
         event.preventDefault()
         msg = $('#message').val().trim()
@@ -27,11 +27,14 @@ function setup(bus, login_reply) {
 }
 
 function login() {
-    var bus = new vertx.EventBus(location.origin + '/eventbus')
+    var bus = new vertx.EventBus(location.origin + 
+                                 '/eventbus')
     bus.onopen = function() {
-        bus.send('chat-x.login', $('#name').val(), function(reply) {
-            setup(bus, reply)
-        })
+        bus.send('fireside.login', 
+                 $('#name').val(), 
+                 function(reply) {
+                     setup(bus, reply)
+                 })
     }
 }
 

@@ -1,4 +1,4 @@
-# chat-x
+# Fireside Chat
 
 Polyglot Vert.x sample app for my CodeMash 2013 presentation.
 

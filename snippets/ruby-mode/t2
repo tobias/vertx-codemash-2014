@@ -1,17 +1,12 @@
 # key: t2
 # --
-
-def listen_for_messages(sock)
-  Vertx::EventBus.register_handler(Vertx.config['messages-address']) do |msg|
-    message, user = msg.body.values_at('message', 'user')
-    sock.write_str("<#{user}> #{message}\n")
-  end
-end
-
-def login(user_ids, sock, user)
+def login(user_ids, socket, user)
   Vertx::EventBus.send(Vertx.config['login-address'], user) do |reply_msg|
-    user_ids[sock] = reply_msg.body["id"]
-    sock.write_str("Welcome #{user}!\n")
-    listen_for_messages(sock)
+    user_ids[socket] = reply_msg.body["id"]
+    socket.write_str("Welcome #{user}!\n")
+    Vertx::EventBus.register_handler(Vertx.config['messages-address']) do |msg|
+      message, user = msg.body.values_at('message', 'user')
+      socket.write_str("<#{user}> #{message}\n")
+    end
   end
 end
