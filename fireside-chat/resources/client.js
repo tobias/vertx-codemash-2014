@@ -27,8 +27,7 @@ function setup(bus, login_reply) {
 }
 
 function login() {
-    var bus = new vertx.EventBus(location.origin + 
-                                 '/eventbus')
+    var bus = new vertx.EventBus(location.origin + '/eventbus')
     bus.onopen = function() {
         bus.send('fireside.login', 
                  $('#name').val(), 

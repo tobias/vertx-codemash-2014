@@ -3,7 +3,6 @@ import vertx
 from core.event_bus import EventBus
 
 # message format: {'command': 'say', 'payload': 'ahoyhoy'}
-
 def command_handler(user, msg):
     body = msg.body
     status = 'unknown-command'
@@ -17,7 +16,6 @@ def command_handler(user, msg):
 users = set()
 
 # message format: 'username'
-
 def login_handler(msg):
     user = msg.body
     id = vertx.config()['user-prefix'] + str(uuid.uuid4())
