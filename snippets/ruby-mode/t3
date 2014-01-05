@@ -1,7 +1,12 @@
 # key: t3
 # --
-def say(user_ids, socket, *message)
-  Vertx::EventBus.send(user_ids[socket],
-                       {command: 'say',
-                         payload: message.join(' ')})
+def login(user_ids, socket, user)
+  Vertx::EventBus.send(Vertx.config['login-address'], user) do |reply_msg|
+    user_ids[socket] = reply_msg.body["id"]
+    socket.write_str("Welcome #{user}!\n")
+    Vertx::EventBus.register_handler(Vertx.config['messages-address']) do |msg|
+      message, user = msg.body.values_at('message', 'user')
+      socket.write_str("<#{user}> #{message}\n")
+    end
+  end
 end

@@ -1,12 +1,20 @@
 # key: t2
 # --
-def login(user_ids, socket, user)
-  Vertx::EventBus.send(Vertx.config['login-address'], user) do |reply_msg|
-    user_ids[socket] = reply_msg.body["id"]
-    socket.write_str("Welcome #{user}!\n")
-    Vertx::EventBus.register_handler(Vertx.config['messages-address']) do |msg|
-      message, user = msg.body.values_at('message', 'user')
-      socket.write_str("<#{user}> #{message}\n")
+require 'vertx'
+
+def start
+  user_ids = {}
+  Vertx::NetServer.new.connect_handler do |socket|
+    socket.data_handler do |buffer|
+      cmd, *args = buffer.to_s.strip.split
+      case cmd
+      when "login"
+        login(user_ids, socket, *args)
+      when "say"
+        say(user_ids, socket, *args)
+      end
     end
-  end
+  end.listen(9999, "0.0.0.0") { |ignored| puts "TCP server bound to 0.0.0.0:9999" }
 end
+
+start

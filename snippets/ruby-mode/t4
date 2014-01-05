@@ -1,0 +1,7 @@
+# key: t4
+# --
+def say(user_ids, socket, *message)
+  Vertx::EventBus.send(user_ids[socket],
+                       {command: 'say',
+                         payload: message.join(' ')})
+end

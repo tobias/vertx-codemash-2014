@@ -1,18 +1,7 @@
 # key: t1
 # --
-require 'vertx'
 
 # commands:
 # login username
 # say hi there friends!
-def start
-  user_ids = {}
-  Vertx::NetServer.new.connect_handler do |socket|
-    socket.data_handler do |buffer|
-      cmd, *args = buffer.to_s.strip.split
-      __send__(cmd, user_ids, socket, *args) if %w{login say}.include?(cmd)
-    end
-  end.listen(9999, "0.0.0.0") { |ignored| puts "TCP server bound to 0.0.0.0:9999" }
-end
 
-start
