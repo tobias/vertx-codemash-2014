@@ -1,0 +1,7 @@
+# key: b1
+# --
+require 'vertx'
+
+Vertx::FileSystem.open('resources/fortunes') do |err, file|
+
+end

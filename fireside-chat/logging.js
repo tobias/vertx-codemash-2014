@@ -4,6 +4,7 @@ var console = require('vertx/console')
 var eb = vertx.eventBus
 var config = container.config
 
+//message format: 'command'
 function commandHandler(msg, replyFn) {
     if (msg == 'get-all') {
         eb.send('vertx.mongopersistor',

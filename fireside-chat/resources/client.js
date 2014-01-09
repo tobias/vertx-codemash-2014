@@ -6,8 +6,12 @@ function display_message(message) {
     $('#messages')
         .append($('<div/>').text('<' + message.user + '> ' + 
                                  message.message))
+    $('#messages')
+        .scrollTop($('#messages')[0].scrollHeight)
 }
 
+// message format: {id: 'my-id', 
+//                  users: ['batman', 'wolverine', 'rorschach']}
 function setup(bus, login_reply) {
     login_reply.users.map(display_user)
     bus.registerHandler('fireside.users', display_user)

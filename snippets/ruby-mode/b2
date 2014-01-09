@@ -1,0 +1,7 @@
+# key: b2
+# --
+  content = Vertx::Buffer.create
+  
+  file.data_handler do |buff|
+    content.append_buffer(buff)
+  end
