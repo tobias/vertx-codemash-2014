@@ -13,6 +13,7 @@
   (repl/start)
   (vertx/deploy-verticle "routing.py" :config config)
   (vertx/deploy-verticle "logging.js" :config config)
+  (vertx/deploy-verticle "bot.rb" :config config)
   (vertx/deploy-verticle "web.groovy" :config config :instances 2))
 
 (init)
