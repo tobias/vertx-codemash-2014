@@ -16,6 +16,7 @@ to deploy Clojure applications. Edit `<vertx root>/conf/langs.properties` and ad
     clojure=io.vertx~lang-clojure~0.4.0:io.vertx.lang.clojure.ClojureVerticleFactory
     .clj=clojure
     
-Then `cd` in to `fireside-chat` and run `vertx run init.clj`
+Then `cd` in to `fireside-chat` and run `vertx run init.clj` and hit
+<http://localhost:8080> in a browser.
 
 
